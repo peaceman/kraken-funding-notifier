@@ -1,0 +1,22 @@
+{
+    "name": "peaceman/kraken-funding-notifier",
+    "description": "Sends you a desktop notification on OS X, as soon as your Kraken account reaches a positive balance.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "peaceman",
+            "email": "nixalio@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/intux/kraken-api-client"
+        }
+    ],
+    "require": {
+        "symfony/process": "~2.5",
+        "intux/kraken-api-client": "dev-master"
+    }
+}
