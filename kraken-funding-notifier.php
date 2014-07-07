@@ -50,7 +50,7 @@ class KrakenFundingObserver
 	{
 		$response = $this->apiClient->QueryPrivate('Balance');
 		if (!empty($response['error'])) {
-			$msg = 'An error occurred while querying the Kraken API. (' . implode('; ', $result['error']) . ')';
+			$msg = 'An error occurred while querying the Kraken API. (' . implode('; ', $response['error']) . ')';
 			throw new RuntimeException($msg);
 		}
 
