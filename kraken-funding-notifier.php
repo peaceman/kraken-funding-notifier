@@ -39,6 +39,10 @@ class KrakenFundingObserver
 	{
 		$currentFunding = $this->queryApi();
 
+		if (is_null($this->lastFunding)) {
+			$this->createStartNotification($currentFunding);
+		}
+
 		if (!is_null($this->lastFunding) && $currentFunding > $this->lastFunding) {
 			$this->createNotification($currentFunding);
 		}
@@ -61,6 +65,17 @@ class KrakenFundingObserver
 		}
 
 		return (float)$result[$this->currency];
+	}
+
+	protected function createStartNotification($balance)
+	{
+		$title = "The first API call was successful!";
+		$msg = "Current balance: $balance $this->currency";
+
+		$this->notificationProcessBuilder
+			->setArguments(['-title', $title, '-message', $msg])
+			->getProcess()
+			->run();
 	}
 
 	protected function createNotification($newBalance)
